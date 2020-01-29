@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "dev": "nodemon  --exec babel-node ./api/index.js"
+    "test": "export NODE_ENV=test &&  sequelize db:migrate:undo:all  && sequelize db:migrate  && nyc --require @babel/register mocha ./api/test/*-test.js --timeout 20000 --exit",
+    "dev": "nodemon  --exec babel-node ./api/index.js",
+    "migrate": "npx sequelize-cli db:migrate"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jéssika Mayumi",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -30,8 +31,12 @@
     "@babel/register": "^7.7.7",
     "@babel/runtime": "^7.7.7",
     "babel-loader": "^8.0.6",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.19.1"
+    "eslint-plugin-import": "^2.20.0",
+    "mocha": "^7.0.1",
+    "nyc": "^15.0.0"
   }
 }

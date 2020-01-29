@@ -1,0 +1,7 @@
+
+entrar dentro do postgres
+sudo docker exec -it bq-api-node_db psql -U postgres
+
+
+link da documentação do express 
+https://expressjs.com/pt-br/guide/database-integration.html#postgres
