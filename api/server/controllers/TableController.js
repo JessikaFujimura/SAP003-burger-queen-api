@@ -20,8 +20,8 @@ class TableController {
   }
 
   static async addTable(req, res) {
-    console.log(req.body.option, req.body.item_id, req.body.order_id)
-    if (!req.body.option || !req.body.item_id || !req.body.order_id) {
+    console.log(req.body.option, req.body.orderId, req.body.productId)
+    if (!req.body.option || !req.body.orderId || !req.body.productId) {
       util.setError(400, 'Please provide complete details')
       return util.send(res)
     }

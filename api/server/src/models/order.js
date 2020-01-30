@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     waiter: DataTypes.STRING
   }, {});
   Order.associate = function(models) {
-    //Order.hasMany(models.Table)
+    Order.hasMany(models.Table, { foreignKey: 'orderId' })
   };
   return Order;
 };

@@ -4,12 +4,6 @@ module.exports = (sequelize, DataTypes) => {
     option: DataTypes.STRING,
   }, {});
   Table.associate = function(models) {
-    // Table.hasMany(models.Product, {
-    //   foreingKey: 'productId'
-    // })
-    // Table.hasMany(models.Order, {
-    //   foreingKey: 'orderId'
-    // })
   };
   return Table;
 };
