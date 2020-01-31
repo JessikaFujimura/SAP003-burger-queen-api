@@ -3,8 +3,7 @@ import Util from '../utils/Utils'
 
 const util = new Util()
 
-class OrderController {
-  static async getAllOrders(req, res) {
+  const getAllOrders = async (req, res) => {
     try {
       const allOrders = await OrderService.getAllOrders()
       if (allOrders.length > 0) {
@@ -19,8 +18,7 @@ class OrderController {
     }
   }
 
-  static async addOrder(req, res) {
-    console.log(req.body.client, req.body.status, req.body.table, req.body.waiter)
+  const addOrder = async (req, res) => {
     if (!req.body.client || !req.body.status || !req.body.table || !req.body.waiter) {
       util.setError(400, 'Please provide complete details')
       return util.send(res)
@@ -36,7 +34,7 @@ class OrderController {
     }
   }
 
-  static async updatedOrder(req, res) {
+  const updatedOrder = async (req, res) => {
     const alteredOrder = req.body
     const { id } = req.params
     if (!Number(id)) {
@@ -57,7 +55,7 @@ class OrderController {
     }
   }
 
-  static async getOrder(req, res) {
+  const getOrder = async (req, res) => {
     const { id } = req.params
     if (!Number(id)) {
       util.setError(400, 'Please input a valid numeric value')
@@ -78,7 +76,7 @@ class OrderController {
     }
   }
 
-  static async deleteOrder(req, res) {
+  const deleteOrder = async (req, res) => {
     const { id } = req.params
 
     if (!Number(id)) {
@@ -100,6 +98,12 @@ class OrderController {
       return util.send(res)
     }
   }
-}
 
-export default OrderController
+
+export default {
+  getAllOrders,
+  addOrder,
+  getOrder,
+  updatedOrder,
+  deleteOrder
+}

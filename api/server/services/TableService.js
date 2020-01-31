@@ -11,7 +11,6 @@ class TableService {
 
   static async addTable(newTable) {
     try {
-      console.log(newTable)
       return await database.Table.create(newTable)
     } catch (error) {
       throw error

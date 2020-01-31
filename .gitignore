@@ -1,2 +1,5 @@
 node_modules
 api/server/src/config
+commands.txt
+.vscode
+.nyc_output

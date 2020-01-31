@@ -3,8 +3,7 @@ import Util from '../utils/Utils'
 
 const util = new Util()
 
-class TableController {
-  static async getAllTables(req, res) {
+  const getAllTables = async (req, res) => {
     try {
       const allTables = await TableService.getAllTables()
       if (allTables.length > 0) {
@@ -19,10 +18,13 @@ class TableController {
     }
   }
 
-  static async addTable(req, res) {
-    console.log(req.body.option, req.body.orderId, req.body.productId)
-    if (!req.body.option || !req.body.orderId || !req.body.productId) {
+  const addTable = async (req, res) => {
+    if (!req.body.orderId || !req.body.productId) {
       util.setError(400, 'Please provide complete details')
+      return util.send(res)
+    }
+    if (!req.body.option && req.body.productId === 5 || req.body.productId === 6) {
+      util.setError(400, 'Please insert a typeId valid')
       return util.send(res)
     }
     const newTable = req.body
@@ -36,7 +38,7 @@ class TableController {
     }
   }
 
-  static async updatedTable(req, res) {
+  const updatedTable = async (req, res) => {
     const alteredTable = req.body
     const { id } = req.params
     if (!Number(id)) {
@@ -57,7 +59,7 @@ class TableController {
     }
   }
 
-  static async getTable(req, res) {
+  const getTable = async (req, res) => {
     const { id } = req.params
     if (!Number(id)) {
       util.setError(400, 'Please input a valid numeric value')
@@ -65,7 +67,6 @@ class TableController {
     }
     try {
       const theTable = await TableService.getTable(id)
-
       if (!theTable) {
         util.setError(404, `Cannot find Table with the id ${id}`)
       } else {
@@ -78,7 +79,7 @@ class TableController {
     }
   }
 
-  static async deleteTable(req, res) {
+ const deleteTable = async (req, res) => {
     const { id } = req.params
 
     if (!Number(id)) {
@@ -100,6 +101,12 @@ class TableController {
       return util.send(res)
     }
   }
-}
 
-export default TableController
+
+export default {
+  getAllTables,
+  addTable,
+  updatedTable,
+  getTable,
+  deleteTable
+}

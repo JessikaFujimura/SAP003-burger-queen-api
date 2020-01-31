@@ -9,3 +9,7 @@ https://expressjs.com/pt-br/guide/database-integration.html#postgres
 
 Documentação do postgresql
 http://pgdocptbr.sourceforge.net/pg80/ddl.html
+
+
+Documentação sobre API de aluno da rocketseat 
+https://www.tgmarinho.com/gobarber-aplicacao-backend/
