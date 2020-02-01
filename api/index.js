@@ -1,10 +1,14 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import productRoutes from './server/routes/ProductRoutes'
-import orderRoutes from './server/routes/OrderRoutes'
-import tableRoutes from './server/routes/TableRoutes'
+import cors from 'cors';
+import productRoutes from './server/routes/ProductRoutes';
+import orderRoutes from './server/routes/OrderRoutes';
+import tableRoutes from './server/routes/TableRoutes';
 
 const app = express();
+
+app.use(cors());
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
