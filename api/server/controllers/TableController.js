@@ -23,10 +23,10 @@ const util = new Util()
       util.setError(400, 'Please provide complete details')
       return util.send(res)
     }
-    if (!req.body.option && req.body.productId === 5 || req.body.productId === 6) {
-      util.setError(400, 'Please insert a typeId valid')
-      return util.send(res)
-    }
+    // if (!req.body.option && req.body.productId === 5 || req.body.productId === 6) {
+    //   util.setError(400, 'Please insert a typeId valid')
+    //   return util.send(res)
+    // }
     const newTable = req.body
     try {
       const createdTable = await TableService.addTable(newTable)

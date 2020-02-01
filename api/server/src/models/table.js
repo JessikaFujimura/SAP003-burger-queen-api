@@ -5,8 +5,6 @@ module.exports = (sequelize, DataTypes) => {
     quant: DataTypes.INTEGER
   }, {});
   Table.associate = function(models) {
-    Table.belongsTo(models.Product, { foreignKey: 'productId' })
-    Table.belongsTo(models.Product, { foreignKey: 'typeId' })
   };
   return Table;
 };

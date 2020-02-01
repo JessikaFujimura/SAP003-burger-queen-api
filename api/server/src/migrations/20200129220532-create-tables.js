@@ -22,6 +22,8 @@ module.exports = {
         references: {model:'Products', key:'id'}
       },
       typeId: {
+        allowNull: false,
+        defaultValue: 15,
         type: Sequelize.INTEGER,
         references: {model:'Products', key:'id'}
       },

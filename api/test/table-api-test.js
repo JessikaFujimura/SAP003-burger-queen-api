@@ -6,7 +6,7 @@ chai.use(chatHttp)
 const { expect } = chai
 
 describe('Testing the tables endpoints:', () => {
-
+  
   it('It should create a tables', (done) => {
     const product = {
       menu: 'allDay',
@@ -67,42 +67,42 @@ describe('Testing the tables endpoints:', () => {
                   orderId: table.orderId,
                   typeId: table.typeId,
                 })
+                done()
               })
           })
       })
-    done()
   })
 
   it('It should not create a table with incomplete parameters', (done) => {
-    const table = {
+    const tables = {
       quant: 3,
       orderId: 2,
     }
     chai.request(app)
       .post('/api/tables')
       .set('Accept', 'application/json')
-      .send(table)
+      .send(tables)
       .end((err, res) => {
         expect(res.status).to.equal(400)
         done()
       })
   })
 
-  // it('It should get all tables', (done) => {
-  //   chai.request(app)
-  //     .get('/api/tables')
-  //     .set('Accept', 'application/json')
-  //     .end((err, res) => {
-  
-  //       expect(res.status).to.equal(200)
-  //       res.body.data[0].should.have.property('id')
-  //       res.body.data[0].should.have.property('option')
-  //       res.body.data[0].should.have.property('quant')
-  //       res.body.data[0].should.have.property('productId')
-  //       res.body.data[0].should.have.property('orderId')
-  //       res.body.data[0].should.have.property('typeId')
-  //     })
-  // })
+  it('It should get all tables', (done) => {
+    chai.request(app)
+      .get('/api/tables')
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        expect(res.status).to.equal(200)
+        res.body.data[0].should.have.property('id')
+        res.body.data[0].should.have.property('option')
+        res.body.data[0].should.have.property('quant')
+        res.body.data[0].should.have.property('productId')
+        res.body.data[0].should.have.property('orderId')
+        res.body.data[0].should.have.property('typeId')
+        done()
+      })
+  })
 
   // it('It should get a particular table', (done) => {
   //   const tableId = 1
@@ -148,28 +148,28 @@ describe('Testing the tables endpoints:', () => {
   //     })
   // })
 
-  it('It should update a table', (done) => {
-    const tableId = 1
-    const updatedTable = {
-      id: tableId,
-      menu: 'allDay',
-      name: 'Pão de queijo',
-      price: '5.00',
-      type: 'nenhum',
-    }
-    chai.request(app)
-      .put(`/api/products/${productId}`)
-      .set('Accept', 'application/json')
-      .send(updatedProduct)
-      .end((err, res) => {
-        expect(res.status).to.equal(200)
-        expect(res.body.data.id).equal(updatedProduct.id)
-        expect(res.body.data.menu).equal(updatedProduct.menu)
-        expect(res.body.data.price).equal(updatedProduct.price)
-        expect(res.body.data.type).equal(updatedProduct.type)
-        done()
-      })
-  })
+  // it('It should update a table', (done) => {
+  //   const tableId = 1
+  //   const updatedTable = {
+  //     id: tableId,
+  //     menu: 'allDay',
+  //     name: 'Pão de queijo',
+  //     price: '5.00',
+  //     type: 'nenhum',
+  //   }
+  //   chai.request(app)
+  //     .put(`/api/products/${productId}`)
+  //     .set('Accept', 'application/json')
+  //     .send(updatedProduct)
+  //     .end((err, res) => {
+  //       expect(res.status).to.equal(200)
+  //       expect(res.body.data.id).equal(updatedProduct.id)
+  //       expect(res.body.data.menu).equal(updatedProduct.menu)
+  //       expect(res.body.data.price).equal(updatedProduct.price)
+  //       expect(res.body.data.type).equal(updatedProduct.type)
+  //       done()
+  //     })
+  // })
 
   // it('It should not update a product with invalid id', (done) => {
   //   const productId = '9999'

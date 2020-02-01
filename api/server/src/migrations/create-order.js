@@ -9,7 +9,6 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       option: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       productId: {
@@ -21,6 +20,12 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {model:'Orders', key:'id'}
+      },
+      typeId: {
+        allowNull: false,
+        defaultValue: 15,
+        type: Sequelize.INTEGER,
+        references: {model:'Products', key:'id'}
       },
       createdAt: {
         allowNull: false,
